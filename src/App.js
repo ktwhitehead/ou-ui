@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import './App.css';
 import LineGraph from './Components/LineGraph';
 import data from './test_data';
@@ -20,11 +20,26 @@ function App() {
   const [gameData, setGameData] = useState({});
   const { setOnMessage } = useWebSocket('ws://192.168.145.182:5000');
 
+  // useEffect(() => {
+  //   const gameData = data;
+  //   const { [Object.keys(data)[0]]: remove, ...rest } = gameData;
+  //   const updatedData = { ...rest, ...data }
+
+  //   const sorted = Object.entries(updatedData).sort((x, y) => x[1].time_elapsed - y[1].time_elapsed)
+
+  //   const sortedGames = Object.fromEntries(sorted);
+  //   setGameData(sortedGames);
+  // }, []);
+
   setOnMessage((message) => {
-    const data = JSON.parse(message.data)
+    const gameData = data;
     const { [Object.keys(data)[0]]: remove, ...rest } = gameData;
     const updatedData = { ...rest, ...data }
-    setGameData(updatedData);
+
+    const sorted = Object.entries(updatedData).sort((x, y) => x[1].time_elapsed - y[1].time_elapsed)
+
+    const sortedGames = Object.fromEntries(sorted);
+    setGameData(sortedGames);
   });
 
   return (

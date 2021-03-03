@@ -1,7 +1,7 @@
 const data = {
   "ind vs was": {
     total_points: 5,
-    time_elapsed: "00:21:23",
+    time_elapsed: 100,
     average_points: 210,
     over_under: 211,
     graph_data: [
@@ -35,7 +35,7 @@ const data = {
   },
   "test vs test": {
     total_points: 5,
-    time_elapsed: "00:21:23",
+    time_elapsed: 1000,
     average_points: 210,
     over_under: 211,
     graph_data: [
