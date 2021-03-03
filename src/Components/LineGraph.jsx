@@ -8,7 +8,7 @@ const LineGraphWrapper = styled("div")`
 `;
 
 const commonProperties = {
-  enableSlices: 'x',
+  enableSlices: "x"
 }
 
 const LineGraph = ({data}) => (
@@ -26,7 +26,6 @@ const LineGraph = ({data}) => (
       }}
       margin={{ top: 50, right: 160, bottom: 50, left: 60 }}
       curve="monotoneX"
-      enableGridX={false}
       colors={{ scheme: "category10" }}
       legends={[
         {

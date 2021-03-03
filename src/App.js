@@ -17,13 +17,13 @@ const GameRow = styled(Flex)`
 `;
 
 function App() {
-  const [gameData, setGameData] = useState(data);
-  const { setOnMessage } = useWebSocket('ws://172.19.229.37:5000');
+  const [gameData, setGameData] = useState({});
+  const { setOnMessage } = useWebSocket('ws://192.168.145.182:5000');
 
   setOnMessage((message) => {
     const data = JSON.parse(message.data)
-    const currentData = gameData;
-    const updatedData = currentData[Object.keys(data)[0]] = data;
+    const { [Object.keys(data)[0]]: remove, ...rest } = gameData;
+    const updatedData = { ...rest, ...data }
     setGameData(updatedData);
   });
 
