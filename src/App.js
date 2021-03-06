@@ -18,21 +18,10 @@ const GameRow = styled(Flex)`
 
 function App() {
   const [gameData, setGameData] = useState({});
-  const { setOnMessage } = useWebSocket('ws://192.168.145.182:5000');
-
-  // useEffect(() => {
-  //   const gameData = data;
-  //   const { [Object.keys(data)[0]]: remove, ...rest } = gameData;
-  //   const updatedData = { ...rest, ...data }
-
-  //   const sorted = Object.entries(updatedData).sort((x, y) => x[1].time_elapsed - y[1].time_elapsed)
-
-  //   const sortedGames = Object.fromEntries(sorted);
-  //   setGameData(sortedGames);
-  // }, []);
+  const { setOnMessage } = useWebSocket('ws://192.168.68.101:5000');
 
   setOnMessage((message) => {
-    const gameData = data;
+    const data = JSON.parse(message.data);
     const { [Object.keys(data)[0]]: remove, ...rest } = gameData;
     const updatedData = { ...rest, ...data }
 
