@@ -24,6 +24,7 @@ const useWebSocket = (url) => {
   };
 
   const reconnect = useCallback(() => {
+      console.log("KEATON", url);
       const newSocket = new WebSocket(url);
       newSocket.onopen = (event) => {
           setConnected(true);
