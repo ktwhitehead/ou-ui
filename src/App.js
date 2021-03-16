@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import { ThemeProvider } from 'styled-components';
 import theme from './Theme';
 import AppContextProvider from './Context/AppContextProvider';
