@@ -4,7 +4,6 @@ import theme from './Theme';
 import AppContextProvider from './Context/AppContextProvider';
 import SocketContextProvider from './Context/SocketContextProvider';
 import Routes from './Routes';
-// import { withAuthenticator } from '@aws-amplify/ui-react';
 
 const App = () => {
   return (

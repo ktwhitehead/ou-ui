@@ -1,11 +1,17 @@
 const routes = [
   {
+    page: "Login",
+    requireAuth: false,
+    attributes: {
+      path: "/login",
+    },
+  },
+  {
     page: "Home",
     requireAuth: false,
     attributes: {
       path: "/",
-      exact: true,
-      strict: true
+      exact: true
     }
   },
   {
@@ -14,22 +20,13 @@ const routes = [
     attributes: {
       path: "/over-under",
       exact: true,
-      strict: true,
-    },
-  },
-  {
-    page: "Login",
-    requireAuth: false,
-    attributes: {
-      path: "/login",
-      exact: true,
-      strict: true,
+      strict: true
     },
   },
   {
     page: "NotFound",
     requireAuth: false,
-    attributes: {},
+    attributes: {}
   },
 ];
 
