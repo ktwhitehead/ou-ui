@@ -2,10 +2,10 @@ import React, { useState, useEffect } from 'react';
 import AppContext from './AppContext';
 import { onAuthUIStateChange } from '@aws-amplify/ui-components'
 
-const AppContextProvider = ({children}) => {
+const AppContextProvider = ({ children }) => {
   const [connected, setConnected] = useState(false);
-  const [authState, setAuthState] = React.useState();
-  const [user, setUser] = React.useState();
+  const [authState, setAuthState] = useState();
+  const [user, setUser] = useState();
 
   useEffect(() => {
     return onAuthUIStateChange((nextAuthState, authData) => {

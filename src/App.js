@@ -4,7 +4,7 @@ import theme from './Theme';
 import AppContextProvider from './Context/AppContextProvider';
 import SocketContextProvider from './Context/SocketContextProvider';
 import Routes from './Routes';
-import { withAuthenticator } from '@aws-amplify/ui-react';
+// import { withAuthenticator } from '@aws-amplify/ui-react';
 
 const App = () => {
   return (
@@ -20,4 +20,4 @@ const App = () => {
   );
 }
 
-export default withAuthenticator(App);
+export default App;

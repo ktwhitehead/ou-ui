@@ -1,4 +1,4 @@
-import React, {  useContext, useState } from 'react';
+import React, { useContext, useState } from 'react';
 import SocketContext from './SocketContext';
 import useWebSocket from '../Hooks/useWebSocket';
 import AppContext from './AppContext';

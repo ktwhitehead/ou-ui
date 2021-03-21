@@ -1,9 +1,14 @@
-import React from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import { AmplifyAuthenticator, AmplifySignUp, AmplifySignIn } from "@aws-amplify/ui-react";
+import SocketContext from '../../Context/SocketContext';
 
 const Login = () => {
+  const { socket } = useContext(SocketContext);
+  const [test, setTest] = useState();
+
   return (
   <AmplifyAuthenticator>
+    <div>Hi Mom</div>
     {/* <AmplifySignUp
       slot="sign-up"
       usernameAlias="email"

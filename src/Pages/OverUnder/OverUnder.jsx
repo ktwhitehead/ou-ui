@@ -1,9 +1,10 @@
-import { useState, useContext } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import LineGraph from '../../Components/LineGraph';
 import data from '../../test_data';
 import Flex from '../../Components/Flex';
 import styled from 'styled-components/macro';
 import SocketContext from '../../Context/SocketContext';
+import MainLayout from '../../Layouts/Main';
 
 const GameStats = styled.div`
   width: 10%;
@@ -15,12 +16,12 @@ const GameRow = styled(Flex)`
   width: 100%;s
 `;
 
-function App() {
-  const [gameData, setGameData] = useState(data);
+const OverUnder = () => {
+  const [gameData, setGameData] = useState({});
   const { setOnMessage } = useContext(SocketContext);
 
-  setOnMessage((message) => {
-    const gameData = message;
+  setOnMessage(message => {
+    const gameData = JSON.parse(message.data);
     const { [Object.keys(gameData)[0]]: remove, ...rest } = gameData;
     const updatedData = { ...rest, ...gameData }
 
@@ -31,18 +32,18 @@ function App() {
   });
 
   return (
-    <div>
-    {Object.keys(gameData).map(game => {
-      const data = gameData[game];
-      return (
-        <GameRow key={`game-${game}`} justifyBetween >
-          <GameStats><h3>{game}</h3></GameStats>
-          <LineGraph data={data.graph_data} />
-        </GameRow>
-      )
-    })}
-    </div>
+    <MainLayout>
+      {Object.keys(gameData).map(game => {
+        const data = gameData[game];
+        return (
+          <GameRow key={`game-${game}`} justifyBetween >
+            <GameStats><h3>{game}</h3></GameStats>
+            <LineGraph data={data.graph_data} />
+          </GameRow>
+        )
+      })}
+    </MainLayout>
   );
 }
 
-export default App;
+export default OverUnder;
